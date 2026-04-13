@@ -1,0 +1,100 @@
+:root {
+    --bg-dark: #05070a;
+    --glass: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --neon-cyan: #00f2ff;
+    --neon-purple: #bc13fe;
+    --text-main: #f0f0f0;
+    --text-dim: #888;
+}
+
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    display: flex; justify-content: center; align-items: center;
+    overflow: hidden;
+}
+
+.bg-glow {
+    position: fixed; width: 100vw; height: 100vh;
+    background: radial-gradient(circle at 20% 30%, rgba(0, 242, 255, 0.07) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(188, 19, 254, 0.07) 0%, transparent 40%);
+    z-index: -1;
+}
+
+.game-container {
+    width: 100%; max-width: 450px; height: 100vh;
+    position: relative; padding: 20px;
+}
+
+.screen {
+    position: absolute; inset: 15px;
+    display: none; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center; backdrop-filter: blur(15px);
+    border-radius: 24px; border: 1px solid var(--glass-border);
+    background: var(--glass);
+    transition: 0.3s ease;
+}
+
+.screen.active { display: flex; animation: fadeIn 0.4s ease-out; }
+
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+.title { font-family: 'Orbitron', sans-serif; font-size: 2.8rem; line-height: 1; margin-bottom: 15px; }
+.neon-text { color: var(--neon-cyan); text-shadow: 0 0 15px rgba(0, 242, 255, 0.6); }
+.instructions { color: var(--text-dim); margin-bottom: 35px; font-size: 0.9rem; padding: 0 20px; }
+
+.main-btn {
+    padding: 16px 36px; font-family: 'Orbitron', sans-serif; font-size: 1rem;
+    background: transparent; color: white; border: 2px solid var(--neon-purple);
+    border-radius: 50px; cursor: pointer; transition: 0.3s;
+    box-shadow: 0 0 15px rgba(188, 19, 254, 0.2);
+    margin-bottom: 15px;
+}
+
+.main-btn:hover { background: var(--neon-purple); box-shadow: 0 0 30px rgba(188, 19, 254, 0.5); }
+
+.stats-bar { position: absolute; top: 30px; width: 85%; display: flex; justify-content: space-between; }
+.stat-box .label { font-size: 0.65rem; color: var(--text-dim); letter-spacing: 2px; display: block; }
+.stat-box .value { font-family: 'Orbitron', sans-serif; font-size: 1.6rem; color: var(--neon-cyan); }
+
+#play-area { width: 100%; height: 50%; position: relative; margin-top: 20px; }
+
+.target-btn {
+    position: absolute; width: 65px; height: 65px;
+    background: radial-gradient(circle, var(--neon-cyan), var(--neon-purple));
+    border: none; border-radius: 50%; cursor: pointer;
+    box-shadow: 0 0 25px rgba(0, 242, 255, 0.7);
+    transition: transform 0.1s;
+}
+
+/* Fixed Glass Footer with Hidden Email */
+.game-footer {
+    position: absolute; bottom: 25px; width: 100%;
+    font-size: 0.85rem; color: var(--text-dim);
+}
+
+.developer-link {
+    color: var(--neon-cyan); text-decoration: none;
+    font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1px; position: relative;
+    transition: all 0.3s ease;
+}
+
+.developer-link:hover {
+    color: var(--neon-purple);
+    text-shadow: 0 0 10px rgba(188, 19, 254, 0.5);
+}
+
+.ad-placeholder { position: absolute; bottom: 100px; width: 80%; border: 1px dashed #333; padding: 10px; font-size: 0.6rem; color: #444; }
+.final-score-circle { width: 130px; height: 130px; border: 3px solid var(--neon-cyan); border-radius: 50%; display: flex; flex-direction: column; justify-content: center; margin: 25px 0; }
+.best-record { color: #00ff88; font-weight: bold; margin-bottom: 15px; display: none; }
