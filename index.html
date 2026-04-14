@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tap Reaction | Laxman Koirala</title>
+
+    <!-- Google AdSense Auto Ads -->
+    <script async 
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6633486007043409"
+        crossorigin="anonymous">
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-glow"></div>
+
+    <div class="game-container">
+        <!-- START SCREEN -->
+        <div id="start-screen" class="screen active">
+            <h1 class="title">TAP<br><span class="neon-text">REACTION</span></h1>
+            <p class="instructions">Test your reflexes. Tap the targets as they spawn. You have 30 seconds.</p>
+            
+            <button id="start-btn" class="main-btn">START MISSION</button>
+            <div class="high-score-tag">Personal Best: <span id="menu-high-score">0</span></div>
+
+            <footer class="game-footer">
+                <p>Developed by <a href="mailto:laxmankoirala7788@gmail.com" class="developer-link">Laxman Koirala</a></p>
+            </footer>
+        </div>
+
+        <!-- GAME SCREEN -->
+        <div id="game-screen" class="screen">
+            <div class="stats-bar">
+                <div class="stat-box">
+                    <span class="label">SCORE</span>
+                    <span id="current-score" class="value">00</span>
+                </div>
+                <div class="stat-box">
+                    <span class="label">TIME</span>
+                    <span id="timer" class="value">30s</span>
+                </div>
+            </div>
+            
+            <div id="play-area">
+                <button id="target" class="target-btn"></button>
+            </div>
+        </div>
+
+        <!-- GAME OVER -->
+        <div id="game-over-screen" class="screen">
+            <h2 class="neon-text">MISSION OVER</h2>
+            <div class="final-stats">
+                <div class="final-score-circle">
+                    <span class="label">FINAL SCORE</span>
+                    <span id="final-score" class="score-val">0</span>
+                </div>
+                <div id="new-record" class="best-record">NEW HIGH SCORE!</div>
+            </div>
+            
+            <button id="restart-btn" class="main-btn">RETRY</button>
+
+            <footer class="game-footer">
+                <p>Designed by <a href="mailto:laxmankoirala7788@gmail.com" class="developer-link">Laxman Koirala</a></p>
+            </footer>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
