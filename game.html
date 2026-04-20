@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="Play Tap Reaction for free — tap targets as fast as you can in 30 seconds. Test your reflexes and beat your high score.">
+  <title>Tap Reaction — Free Reflex Game | Reflex.GG</title>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6633486007043409" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ── Game-page-only overrides ── */
+    #target {
+      background: radial-gradient(circle at 35% 35%, #fff 0%, var(--target-color, #00e5ff) 60%);
+      box-shadow: 0 0 0 0 var(--target-color, #00e5ff);
+      animation: target-idle 1.2s ease-in-out infinite;
+    }
+    @keyframes target-idle {
+      0%,100% { box-shadow: 0 0 0 0 rgba(0,229,255,.4), 0 4px 20px rgba(0,229,255,.3); }
+      50%      { box-shadow: 0 0 0 10px rgba(0,229,255,0), 0 4px 28px rgba(0,229,255,.5); }
+    }
+    #target.hit { animation: target-hit .12s ease; }
+    @keyframes target-hit {
+      0% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    /* Streak bar */
+    .streak-bar {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      padding: 12px 24px;
+      border-top: 1px solid var(--border);
+    }
+    .streak-pip {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      transition: all .2s;
+    }
+    .streak-pip.lit { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 6px var(--gold); }
+    .streak-label { font-family: var(--font-mono); font-size: 10px; color: var(--text3); margin-left: 8px; letter-spacing:.1em; text-transform:uppercase; }
+    /* Score pop */
+    .score-pop {
+      position: absolute;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 20px;
+      color: var(--cyan);
+      pointer-events: none;
+      z-index: 10;
+      text-shadow: 0 0 12px var(--cyan);
+      animation: pop-up .6s ease forwards;
+    }
+    .score-pop.multi { color: var(--gold); text-shadow: 0 0 12px var(--gold); }
+    @keyframes pop-up {
+      0%   { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-48px) scale(0.8); }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- ── HEADER ──────────────────────────────────── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">REFLEX<span>.GG</span></a>
+      <nav class="site-nav">
+        <a href="index.html">Games</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── TOP AD ──────────────────────────────────── -->
+  <div class="ad-wrap">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6633486007043409"
+         data-ad-slot="auto"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <main>
+    <div class="container">
+      <!-- Breadcrumb -->
+      <div style="padding:20px 0 0; font-family:var(--font-mono); font-size:11px; color:var(--text3); letter-spacing:.1em;">
+        <a href="index.html" style="color:var(--text3);">HOME</a> &nbsp;/&nbsp; TAP REACTION
+      </div>
+
+      <div class="game-page-wrap">
+
+        <!-- ── GAME ARENA ─────────────────────────── -->
+        <div>
+          <div class="game-arena">
+            <!-- Top bar: title + live stats -->
+            <div class="game-topbar">
+              <div class="game-title-bar">TAP REACTION</div>
+              <div class="stat-group">
+                <div class="stat-item">
+                  <div class="stat-value" id="display-score">0</div>
+                  <div class="stat-label">Score</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value" id="display-time">30</div>
+                  <div class="stat-label">Time</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value" id="display-streak" style="color:var(--gold)">0</div>
+                  <div class="stat-label">Streak</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timer bar -->
+            <div class="timer-bar-wrap">
+              <div id="timer-bar"></div>
+            </div>
+
+            <!-- Game field -->
+            <div id="game-field">
+              <!-- Target -->
+              <div id="target" style="display:none">
+                <div class="ring"></div>
+                <div class="inner"></div>
+              </div>
+
+              <!-- Start screen -->
+              <div id="screen-start">
+                <h2>TAP<br>REACTION</h2>
+                <p class="hint-text">Tap the glowing target as many times as you can in 30 seconds.</p>
+                <button class="btn btn-primary btn-large" onclick="Game.start()">▶ &nbsp;Start Game</button>
+                <div id="hs-display" style="font-family:var(--font-mono);font-size:12px;color:var(--text3);margin-top:8px;letter-spacing:.15em;min-height:18px;"></div>
+              </div>
+
+              <!-- End screen -->
+              <div id="screen-end" style="display:none">
+                <div class="final-label">YOUR SCORE</div>
+                <div class="final-score" id="final-score">0</div>
+                <div id="new-record" style="font-family:var(--font-mono);font-size:12px;color:var(--gold);letter-spacing:.2em;min-height:18px;margin-bottom:8px;"></div>
+                <button class="btn btn-primary" onclick="Game.start()">↺ &nbsp;Play Again</button>
+                <a href="index.html" class="btn btn-ghost" style="margin-top:4px;font-size:13px">← All Games</a>
+              </div>
+            </div>
+
+            <!-- Streak pips -->
+            <div class="streak-bar" id="streak-bar">
+              <div class="streak-pip" id="pip-0"></div>
+              <div class="streak-pip" id="pip-1"></div>
+              <div class="streak-pip" id="pip-2"></div>
+              <div class="streak-pip" id="pip-3"></div>
+              <div class="streak-pip" id="pip-4"></div>
+              <span class="streak-label" id="streak-label">Streak</span>
+            </div>
+          </div>
+
+          <!-- ── IN-ARTICLE AD BELOW GAME ──────────── -->
+          <div class="ad-wrap" style="border-radius:var(--r-lg);margin-top:20px;border:1px solid var(--border)">
+            <ins class="adsbygoogle"
+                 style="display:block; text-align:center;"
+                 data-ad-layout="in-article"
+                 data-ad-format="fluid"
+                 data-ad-client="ca-pub-6633486007043409"
+                 data-ad-slot="auto"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+
+        <!-- ── SIDEBAR ────────────────────────────── -->
+        <aside class="game-sidebar">
+          <!-- Sidebar Ad -->
+          <div class="ad-wrap ad-sidebar" style="margin-bottom:20px">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6633486007043409"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+
+          <!-- Stats card -->
+          <div class="info-card">
+            <h3>Session Stats</h3>
+            <div class="stat-chip">
+              <span class="label">Best Score</span>
+              <span class="value" id="sidebar-hs">—</span>
+            </div>
+            <div class="stat-chip">
+              <span class="label">Plays Today</span>
+              <span class="value" id="sidebar-plays">0</span>
+            </div>
+            <div class="stat-chip">
+              <span class="label">Best Streak</span>
+              <span class="value" id="sidebar-streak">—</span>
+            </div>
+          </div>
+
+          <!-- How to play card -->
+          <div class="info-card" style="margin-top:16px">
+            <h3>How to Play</h3>
+            <div class="prose" style="margin-top:4px">
+              <ul style="padding-left:16px;color:var(--text2);font-size:13px;line-height:1.8">
+                <li>Press <strong>Start Game</strong></li>
+                <li>Click or tap the glowing circle</li>
+                <li>Score 1 point per hit</li>
+                <li>Bonus points for streaks</li>
+                <li>30 seconds — beat your best!</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Second sidebar ad -->
+          <div class="ad-wrap" style="margin-top:16px; border-radius:var(--r-lg); border:1px solid var(--border); min-height:120px;">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-6633486007043409"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </aside>
+
+      </div><!-- /game-page-wrap -->
+    </div><!-- /container -->
+  </main>
+
+  <!-- ── FOOTER AD ─────────────────────────────── -->
+  <div class="ad-wrap">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-6633486007043409"
+         data-ad-slot="auto"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-copy">© 2025 Reflex.GG · Made by Laxman Koirala</div>
+      <nav class="footer-nav">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
