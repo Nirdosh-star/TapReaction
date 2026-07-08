@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Puja Services | Marga Darsan Jyotish</title>
+    <meta name="description" content="Explore our extensive puja services at Marga Darsan Jyotish made to fulfill all your spiritual needs and bring peace and prosperity to your life."/>
+    
+    <style>
+        :root {
+            --orange: #ff6900;
+            --orange-hover: #e55e00;
+            --amber: #fcb900;
+            --navy: #0f172a;
+            --white: #ffffff;
+            --gray-text: #475569;
+            --bg-cream: #faf5eb;
+            --phone-green: #22c55e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--navy);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ================= NAV BAR ================= */
+        .header_section {
+            background: var(--white);
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+        }
+
+        .header_box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--navy);
+            text-decoration: none;
+            z-index: 1002;
+        }
+
+        .logo-text span {
+            color: var(--orange);
+        }
+
+        .header_menu ul {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .header_menu ul li a {
+            text-decoration: none;
+            color: var(--navy);
+            font-weight: 700;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .header_menu ul li a:hover, .header_menu ul li a.active {
+            color: var(--orange);
+        }
+
+        .header_btn .text {
+            background: var(--orange);
+            color: var(--white);
+            padding: 12px 26px;
+            border-radius: 36px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .header_btn .text:hover {
+            background: var(--orange-hover);
+            transform: translateY(-1px);
+        }
+
+        .menu_bar_box {
+            display: none;
+            cursor: pointer;
+            z-index: 1002;
+            background: none;
+            border: none;
+            outline: none;
+        }
+
+        .menu_bar {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 25px;
+        }
+
+        .menu_bar span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: var(--navy);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .menu_bar_box.open .one { transform: rotate(45deg) translate(5px, 6px); }
+        .menu_bar_box.open .two { opacity: 0; }
+        .menu_bar_box.open .three { transform: rotate(-45deg) translate(5px, -6px); }
+
+        /* ================= MOBILE menu OVERLAY ================= */
+        .mobile_menu_overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background: var(--white);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile_menu_overlay.open {
+            transform: translateX(0);
+        }
+
+        .mobile_menu_overlay ul {
+            list-style: none;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .mobile_menu_overlay ul li a {
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        /* ================= HERO HEADER ================= */
+        .sub-hero {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 4px solid var(--orange);
+        }
+
+        .sub-hero h1 {
+            font-size: 38px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .sub-hero p {
+            color: #cbd5e1;
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .marigold-band {
+            height: 12px;
+            background: repeating-linear-gradient(45deg, var(--orange), var(--orange) 15px, var(--amber) 15px, var(--amber) 30px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ================= PUJA SECTION FRAMES ================= */
+        .puja-services-main {
+            padding: 60px 0;
+            background: var(--bg-cream);
+        }
+
+        .puja-frame-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+            border: 1px solid rgba(15, 23, 42, 0.02);
+        }
+
+        .puja-frame-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 15px;
+        }
+
+        .puja-frame-avatar {
+            font-size: 40px;
+            background: rgba(255, 105, 0, 0.1);
+            width: 70px; height: 70px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%;
+        }
+
+        .puja-frame-header h2 {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--navy);
+        }
+
+        .puja-description {
+            font-size: 16px;
+            color: var(--gray-text);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .dates-section {
+            background: #fff8f0;
+            border-left: 4px solid var(--orange);
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 25px;
+        }
+
+        .dates-section h4 {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--navy);
+        }
+
+        .dates-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            font-size: 14.5px;
+        }
+
+        .month-dates strong {
+            color: var(--orange-hover);
+        }
+
+        .samagri-section {
+            margin-bottom: 25px;
+        }
+
+        .samagri-section h4 {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--navy);
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+
+        .samagri-text {
+            font-size: 15px;
+            color: var(--gray-text);
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .btn-frame-book {
+            background: var(--orange);
+            color: var(--white);
+            border: none;
+            padding: 14px 40px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(255, 105, 0, 0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-frame-book:hover {
+            background: var(--orange-hover);
+        }
+
+        /* ================= BOTTOM DESIGN STUFF ================= */
+        .our_vision_section {
+            padding: 80px 20px;
+            color: var(--white);
+            text-align: center;
+            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+        }
+
+        .our_vision_box h3 { font-size: 30px; font-weight: 800; margin-bottom: 15px; }
+        .our_vision_box p { font-size: 16px; max-width: 800px; margin: 0 auto; color: #ffedd5; }
+
+        .orangesection {
+            background: var(--navy);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .know_more_box h3 { font-size: 24px; font-weight: 800; margin-bottom: 24px; letter-spacing: -0.5px; }
+
+        .btn-call-banner {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--phone-green);
+            color: white;
+            text-decoration: none;
+            padding: 16px 36px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 10px 20px rgba(34, 197, 94, 0.25);
+        }
+
+        .footer_section {
+            background: #090d16;
+            color: #94a3b8;
+            padding: 70px 0;
+        }
+
+        .footer_box {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+        }
+
+        .footer_logo_box h3 { color: #fff; font-size: 26px; font-weight: 800; margin-bottom: 15px; }
+        .footer_logo_box h3 span { color: var(--orange); }
+        .footer_text p { margin-bottom: 24px; font-size: 14.5px; color: #64748b; }
+
+        .footer_contact_deails ul { list-style: none; }
+        .footer_contact_deails ul li { margin-bottom: 14px; font-size: 15px; color: #cbd5e1; }
+
+        .footer_menu ul { list-style: none; display: flex; flex-direction: column; gap: 12px; align-items: flex-end;}
+        .footer_menu ul li a { color: #94a3b8; text-decoration: none; font-size: 15px; font-weight: 600;}
+
+        .copyright_section {
+            background: #04060b;
+            color: #475569;
+            padding: 25px 0;
+            font-size: 14px;
+            border-top: 1px solid #1e293b;
+        }
+
+        .copyright_box { display: flex; justify-content: space-between; }
+
+        .sticky-action-bar {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: #ffffff;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.08);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            padding: 14px 16px;
+            z-index: 999;
+        }
+
+        .bar-btn-call {
+            background: var(--phone-green);
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .bar-btn-book {
+            background: var(--orange);
+            color: #ffffff;
+            border: none;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* ================= POPUP OVERLAY MODAL ================= */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 10000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 460px;
+            max-height: 85vh;
+            overflow-y: auto;
+            border-radius: 24px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 18px; right: 18px;
+            font-size: 26px; cursor: pointer; color: #94a3b8; font-weight: bold;
+        }
+
+        .form-group { margin-bottom: 16px; }
+        .grid-split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 5px; text-transform: uppercase; color: var(--navy);}
+        input, select, textarea { width: 100%; height: 50px; padding: 0 16px; font-size: 16px; border: 1px solid #cbd5e1; border-radius: 10px; outline: none; background: #f8fafc; color: var(--navy); }
+        textarea { height: auto; padding: 12px; }
+        input:focus, textarea:focus { border-color: var(--orange); background: #fff; box-shadow: 0 0 0 4px rgba(255, 105, 0, 0.1); }
+        .btn-submit { width: 100%; height: 52px; background: var(--orange); color: #ffffff; border: none; border-radius: 30px; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 5px; }
+
+        @media (max-width: 768px) {
+            .header_menu, .header_btn { display: none; }
+            .menu_bar_box { display: block; }
+            .puja-services-main { padding: 40px 0; }
+            .puja-frame-card { padding: 24px; margin-bottom: 25px; }
+            .puja-frame-header h2 { font-size: 20px; }
+            .dates-grid { grid-template-columns: 1fr; gap: 8px; }
+            .footer_box { grid-template-columns: 1fr; gap: 40px; }
+            .footer_menu ul { align-items: flex-start; }
+            .slider-text-grid h2 { font-size: 32px; }
+            .copyright_box { flex-direction: column; gap: 10px; text-align: center; }
+            body { padding-bottom: 80px; }
+        }
+
+        @media (min-width: 769px) {
+            .sticky-action-bar { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header layout -->
+    <header class="header_section">
+        <div class="container header_box">
+            <a href="index.html" class="logo-text">Marga Darsan <span>Jyotish</span></a>
+            <nav class="header_menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#" class="active">Puja Services</a></li>
+                    <li><a href="index.html#rabin-pangeni">Astrology</a></li>
+                </ul>
+            </nav>
+            <div class="header_btn" onclick="openPujaModal('General Page Button')">
+                <div class="text">Book Now</div>
+            </div>
+            <button class="menu_bar_box" id="menuToggleBtn" onclick="toggleMobileMenu()">
+                <div class="menu_bar">
+                    <span class="one"></span><span class="two"></span><span class="three"></span>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile_menu_overlay" id="mobileDrawerOverlay">
+        <ul>
+            <li><a href="index.html" onclick="toggleMobileMenu()">Home</a></li>
+            <li><a href="#" onclick="toggleMobileMenu()">Puja Services</a></li>
+            <li><a href="index.html#rabin-pangeni" onclick="toggleMobileMenu()">Astrology</a></li>
+        </ul>
+    </div>
+
+    <section class="sub-hero">
+        <div class="container">
+            <h1>Sacred Puja Services</h1>
+            <p>Complete compilation of traditional calculations and remedial rituals managed for global layout deployments.</p>
+        </div>
+    </section>
+
+    <div class="marigold-band"></div>
+
+    <main class="puja-services-main">
+        <div class="container">
+            
+            <!-- 1. RUDRY PUJA FRAME -->
+            <div class="puja-frame-card">
+                <div class="puja-frame-header">
+                    <div class="puja-frame-avatar">🌊</div>
+                    <h2>रुद्री पूजा ( Rudri Puja )</h2>
+                </div>
+                <div class="puja-description">
+                    <p>रुद्राभिषेक पूजा शिवजीलाई खुसी बनाउनको निमित्त गरिन्छ। भगवान शिव शक्तिका मूल स्रोत हुन्। शिवजीलाई प्रसन्न गराउनले मानसिक तथा शारीरिक दुःख पीडा र बेचैनलाई नाश गरेर शान्तिको अनुभव गर्नको लागि गरिन्छ। रुद्राभिषेक गर्नाले जीवनमा आउने哴 किसिमका कष्टहरु हरेर महादेवले लिन सक्नुहुन्छ भन्ने प्रमाणहरु शिव महापुराण लगायतका पूर्वीय दर्शनहरूमा हामीले सहजै पाउन सक्दछौं जुन दिन रुद्री जुरेको छ उक्त दिन शिवजीलाई प्रसन्न बनाउनको लागि रुद्राभिषेक गर्नाले विभिन्न किसिमका संकटहरू समस्याहरू पारिवारिक भमेलाहरू व्यापार तथा बिजनेसहरू सुधार भएर समृद्धिको बाटो महादेव देखाउनुहुन्छ भन्ने जनविश्वास रहेको पनि छ। श्रावण महिना र माघ महिना शिवजीको प्रिय महिना भएकोले श्रावण र माघमा विशेष रुद्री तथा लघुरुद्री लगाउने गरिन्छ।</p>
+                </div>
+                <div class="dates-section">
+                    <h4>🗓️ यो वर्ष रुद्री जुर्ने दिनहरु (Auspicious Dates):</h4>
+                    <div class="dates-grid">
+                        <div class="month-dates"><strong>श्रावण:</strong> १, ३, ६, ७, ८, १०, १२, १३, १४, १५, १७, २०, २१, २२, २६, २९, ३० र ३१ गते</div>
+                        <div class="month-dates"><strong>भाद्र:</strong> ३, ४, ५, ७, १०, ११, १२, १४, १७, १८, १९ र २० गते</div>
+                        <div class="month-dates"><strong>असोज:</strong> २२, २५, २६, २८ र ३१ गते</div>
+                        <div class="month-dates"><strong>कार्तिक:</strong> १, २, ४, ७, ८, ९, १०, १२, १५, १६, २३, २४, २५, २७ र ३० गते</div>
+                        <div class="month-dates"><strong>मंसिर:</strong> १, २, ४, ७, ८, ९, ११, १४, १५, १६, २०, २१, २२, २३, २४, २६, र २९ गते</div>
+                        <div class="month-dates"><strong>पुस:</strong> १, २, ३, ५, ८, ९, १०, १२, १५ र १६ गते</div>
+                        <div class="month-dates"><strong>माघ:</strong> १, २, ४, ८, ९, ११, १४, १५, १६, २०, २३, २४, २५ र २७ गते</div>
+                        <div class="month-dates"><strong>फाल्गुण:</strong> १, २, ३ र ५ गते</div>
+                        <div class="month-dates"><strong>चैत्र:</strong> १४, १५, १६, २०, २३, २४, २५, २७ र ३० गते</div>
+                    </div>
+                </div>
+                <div class="samagri-section">
+                    <h4>📦 आवश्यक पूजा सामाग्रीहरु:</h4>
+                    <div class="samagri-text">केशरी, अबिर, सिन्दुर, श्रीखण्ड १, रायाे सर्स्यूं, सर्वोषधी, पञ्चपल्लव, पञ्चरत्न, काँचो धागो १ लाछी, सिङ्गो सुपारी–१०, तिल, जौ, जनै–५जोर, धूप, बत्ती, कपुर, पान मसला, सेतो रातो वस्त्र, शिव वस्त्र धोती, गौरीलाई वस्त्र, अत्तर, गोबर, गोमूत्र, दूध, दही,ध्यू, मह, चिनी, मिष्ठан्न, पक्वान्न, फलफूलहरु, सिङ्गो नरिवल, फूलहरु, दूबो,बिल्वपत्र, ध्यान गराउने तरिका, बेलपत्र, हलियाे, कुमकुम इत्यादि।</div>
+                </div>
+                <div class="samagri-section">
+                    <h4>🏺 पूजा भाँडामा:</h4>
+                    <div class="samagri-text">Panchapatra, Achamani, Arghya, Karmapatra, Puja Thali, Shankha, Ghanta, Jaladhara, Trikuti, Aarati, Panchabatti, etc.</div>
+                </div>
+                <button class="btn-frame-book" onclick="openPujaModal('Rudri Puja')">Book Rudri Puja</button>
+            </div>
+
+            <!-- 2. LAKH BATTI PUJA FRAME -->
+            <div class="puja-frame-card">
+                <div class="puja-frame-header">
+                    <div class="puja-frame-avatar">🪔</div>
+                    <h2>लक्ष्यवर्तिका (लाख बत्ती) पूजा</h2>
+                </div>
+                <div class="puja-description">
+                    <p>लाखबत्ती कुनै पनि यज्ञ तथा महायज्ञमा विशेष कर्मको प्राश्चित गर्नको लागि लाखबत्ती अथवा लक्ष्यवर्तीका बाल्ने गरिन्छ । लाखबत्ती बाल्नाले शरीर शुद्धि , वचन शुद्धि मनशुद्धि विचार शुद्धि हुन्छ र बैकुण्ठमा सायुज्य प्राप्त हुन्छ भन्ने पौराणिक मान्यता रहेको छ। प्राय गरी अग्नि , रुद्री जुरेको बेलामा पनि लाखबत्ती बाल्ने गरिन्छ । पितृको नाममा तथा देवताको नाममा पनि विभिन्न भाकल गरि लाखबत्ती बाल्ने चलन पनि छ।</p>
+                </div>
+                <div class="samagri-section">
+                    <h4>📦 आवश्यक पूजा सामाग्रीहरु:</h4>
+                    <div class="samagri-text">केशरी, अबिर, सिन्दुर, जौ, तिल, धूप, कपूर, बत्ती, तिलको तेल ७ ltr, काँचो धागो वा डोरो, चरु (जौ तिल चामल घ्यू, दाउरा प्रशस्त, पञ्चपल्लव, पञ्चरत्न, सर्वोषधी, सिंगο सुपारी २५, जनै जोर, धान ५ भाग टपरीमा, चामल १० भाग टपरीमा, पूर्णपात्र १ भाग (बोहोता वा टपरीमा), रातो सेतो वस्त्र आधा आधा mtr, रातो सर्स्यूं, कलशलाई माटाको घैटा पाँच, नैवेद्यमा (पक्वान्न, मिष्ठान्न, फलफूलहरु), घृतछायालाई काँसको कचौरा, सुवर्ण प्रतिमा, प्रत्येक ब्राह्मणलाई वरणमा (धोती, रुमाल, गन्जी), प्रधान देवी या देवतालाई (वस्त्र, देवीको भए सौभाग्य, माला), तामाको कलश ३, थाली ३, ब्रह्मालाई वस्त्र, विष्णुलाई वस्त्र, महेश्वरलाई वस्त्र, सावित्रीलाई (धोती, चोलो, सौभाग्य), लक्ष्मीलाई (धोती, चोलो, सौभाग्य), पार्वतीलाई (धोती, चोलो, सौभाग्य), चाँदीको दियो, सुनको बत्ती, पाला ५, बत्ती सवालाख, हवनको सरजाम, चरु, दाउरा प्रशस्त, उखु, रेखिको पिठो, कुश, रक्षावन्धन धागो ।</div>
+                </div>
+                <button class="btn-frame-book" onclick="openPujaModal('Lakh Batti Puja')">Book Lakh Batti</button>
+            </div>
+
+            <!-- 3. BAGALAMUKHI PUJA FRAME -->
+            <div class="puja-frame-card">
+                <div class="puja-frame-header">
+                    <div class="puja-frame-avatar">🔱</div>
+                    <h2>बगलामुखी पूजा</h2>
+                </div>
+                <div class="puja-description">
+                    <p>भगवान विष्णुको आवाहनमा सरोवरबाट उत्पन्न हुने मातृ भगवती बगलामुखीको साधना गर्दा, साधकको सबै आध्यात्मिक र भौतिक इच्छाहरू देरी नगरी माता पूरा गर्न मद्दत गर्दछ। माता बगलामुखीको पूजामा पीलो वस्त्रहरूको महत्त्व थाहा छ, माताको वस्त्रहरू पीलो रङका हुन्छन्, यहाँसम्म कि तिनीहरूको मन्त्रजप गर्नका लागि पनि पीलो हल्दीको गठनबाट बनेको मालाको प्रयोग हुन्छ।</p>
+                </div>
+                <button class="btn-frame-book" onclick="openPujaModal('Bagalamukhi Puja')">Book Bagalamukhi</button>
+            </div>
+
+            <!-- 4. BIRTHDAY PUJA FRAME -->
+            <div class="puja-frame-card">
+                <div class="puja-frame-header">🎂</div>
+                <h2>जन्मोत्सव (अष्टचिरञ्जीवी) पूजा ( Birthday Puja)</h2>
+                <div class="puja-description">
+                    <p>कुनै पनि व्यक्तिले आफ्नो जन्म महिनाको जन्मतिथि मा अष्टचिरञ्जीवीको पूजा गर्ने गरिन्छ। अष्ट चिरञ्जीवीको पूजा गर्नाले जीवनमा स्वास्थ्य र समृद्धि को विकास हुन्छ। अष्ट चिरञ्जीवीको पूजा गर्नाले जीवनमा आउने अवरोधहरू हटेर जान्छ परिवारिक सम्बन्ध सकारात्मक रसपमा वृद्धि गर्छ, सद्बुद्धि तथा सद्विचारहरूको विकास हुन्छ। अष्टचिरञ्जीवी मा राजा महाबली, ऋषि वेदव्यास ,भगवान हनुमान,विभीषण ,गुरु कृपाचार्य,भगवान विष्णुको छैंटौं अवतार परशुराम, महाऋषि मार्कण्डय , अस्वस्थामा आदिलाई अष्टचिरञ्जीवीका रुपमा लिइन्छ।</p>
+                </div>
+                <div class="samagri-section">
+                    <h4>📦 सामग्रीहरू:</h4>
+                    <div class="samagri-text">केशरी, अबिर, सिन्दूर, जौ तिल, धूप, कपूर बत्ती, तिलको तेल, पञ्चपल्लव, पञ्चरत्न, सर्वोषधी, सिङ्गो सुपारी १५ गोटा, जनै १० जोर, धान १ भाग टपरीमा, चामल ३ भाग टपरीमा, पूर्णपात्र १ भाग (बोहोता वा टपरीमा), रातो, सेतो, पहेंलो वस्त्र आधा आधा मिटर, गोकुल धूप, सर्स्यूं, कुम्कुम् धूप, गोलोचन, पञ्चामृत, नीमकोपात, फूल, दूबो, नरिवल, फलफूल, मिष्ठान्न, पक्वान्न, पान मसला, दही, च्यूरा, सौभाग्य, काँचो धागो, रेखिको पीठो कुश ।</div>
+                </div>
+                <div class="samagri-section">
+                    <h4>🏺 पूजा भाँडामा:</h4>
+                    <div class="samagri-text">पञ्चपात्र आचमनी, अर्घ्य, कर्मपात्र, तामाको कलश सानो १ ठूलो १ पूजाको लागि पञ्चपाला, ताмаको थाली, शङ्ख, घण्ट आदि ।</div>
+                </div>
+                <button class="btn-frame-book" onclick="openPujaModal('Birthday Puja')">Book Birthday Puja</button>
+            </div>
+
+            <!-- 5. HAVAN PUJA FRAME -->
+            <div class="puja-frame-card">
+                <div class="puja-frame-header">🔥</div>
+                <h2>हवन पूजा</h2>
+                <div class="puja-description">
+                    <p>हवन पूजा एक सांस्कृतिक आचार हो जुन विभिन्न धार्मिक अनुष्ठानहरूमा प्रचलित छ। यसले धार्मिक समाराधना र आत्मिक शक्ति सम्पन्न गर्दछ र समृद्धि, शान्ति, र समृद्धिको लागि ईश्वरलाई प्रार्थना गर्दछ। हवन पूजा अनेक विधिहरूमा भिन्न रूपमा गरिन्छ र यसमा विशिष्ट मन्त्रहरू, यज्ञकुण्डमा अर्पित गरिएको अग्नि, और विभिन्न धार्मिक सामग्रीहरू प्रयोग हुन्छन्। यसले समृद्धिको लागि योजना बनाउँछ र एक सांस्कृतिक समृद्धि र सान्त्वना भरिएको वातावरण प्रदान गर्दछ।</p>
+                </div>
+                <button class="btn-frame-book" onclick="openPujaModal('Havan Puja')">Book Havan</button>
+            </div>
+
+            <!-- 6. SATYANARAYAN PUJA FRAME -->
+            <div class="puja-frame-card">
+                <div class="puja-frame-header">👑</div>
+                <h2>सत्यनारायण पूजा ( Satya Narayan Puja)</h2>
+                <div class="puja-description">
+                    <p>सत्यनारायण पूजा। भगवान विष्णु र लक्ष्मीलाई प्रसन्न बनाउनको लागि सत्यनारायण पूजा लगाउने गरिन्छ सत्यनारायण पूजा लगाउँदा रमासहित श्री विष्णुको आह्वान ध्यान तथा विशेष अङ्गको पूजा गरिन्छ। सत्यनारायणको पूजा गर्नाले शान्ति सौभाग्य तथा लक्ष्मी प्राप्ति हुन्छ। भन्ने विभिन्न पुराणहरूको भावाशय बुझ्न सकिन्छ। सत्यनारायण हिन्दु धर्मलम्बीहरूको मात्रै नभएर बौद्ध धर्मलम्बीहरुले पनि पूजा गर्ने गरेको पाइन्छ विशेषत पहाडी भेगहरूमा वर्षमा एकचोटी अनिवार्य सत्यनारायणको पूजा लगाउने चलन पनि अत्यधिक रहेको छ।</p>
+                </div>
+                <div class="samagri-section">
+                    <h4>📦 सामग्रीहरू:</h4>
+                    <div class="samagri-text">केशरी, अबिर, सिन्दूर, श्रीखण्ड १, तिल, जौ, रायो सर्स्यूं, सर्वोषधी, पञ्चपल्लव, पञ्चरत्न, सिङ्गो सुपारी १०, सुनको प्रतिमा, जनै १०, धूप बात्ती, कपुर, पान मसला, सेतो र रातो वस्त्र, नारायणलाई वस्त्र, लक्ष्मीलाई वस्त्र सौभाग्यहरू, अत्तर, दूध, दही, घ्यू, मह, चिनी वा सखर, मिष्ठान्न, पक्वान्न, जाइफल, फलफूलहरू, अपुङ्गो, नरिवल, फूलहरू, दूबो, तुलसी पत्र, फूलमाला, ब्राह्मण वरण सामग्री, three टपरी चामल, एक टपरी धान, पूर्णपात्रलाई एक बोहोता चामल ।</div>
+                </div>
+                <div class="samagri-section">
+                    <h4>🏺 पूजा भाँडामा:</h4>
+                    <div class="samagri-text">पञ्चपात्र आचमनी , अर्घ्य, कर्मपात्र, धुपौरा, पूजा थाली, कलह सानो १, ठुलो १, शङ्ख, घण्ट, आरती थाली, पञ्चवर्ती, रेखिको पीठो, कुश आदि ।</div>
+                </div>
+                <button class="btn-frame-book" onclick="openPujaModal('Satyanarayan Puja')">Book Satyanarayan</button>
+            </div>
+
+            <!-- 7. PASNI FRAME -->
+            <div class="puja-frame-card">
+                <div class="puja-frame-header">🥣</div>
+                <h2>अन्नप्राशन पूजा ( Pasni or Rice Feeding Ceremony)</h2>
+                <div class="puja-description">
+                    <p>अन्नप्राशन दुई शब्दले बनेको छ । अन्न “भात” र प्राशन “खुवाउने” हो । पूजा गरेको दिनबाट बच्चाले ठोस कुरा खान सुरु गर्ने र अन्नप्राशन जन्मेको ५–८ महिना सम्म गर्ने गरिन्छ । छोरीको लागि बिजोडी महिना र छोराको लागि जोडी महिनामा गर्ने गरिन्छ ।</p>
+                </div>
+                <div class="samagri-section">
+                    <h4>📦 सामाग्रीहरु:</h4>
+                    <div class="samagri-text">जातकलाई राम्रो लुगा सेट, टोपी, जुत्ता, मुन्द्रा वा टप, खुट्टाма कल्ली, हातमा बाला, सिक्री, लुगाफाटा र गहनाहरु । केशरी, अबिर, सिन्दुर, जौ तिल , पञ्चपल्लव, पञ्चरत्न, सर्वाेषधी, सिंगो सुपारी, जनै, धान टपरी, चामल, पूर्णपात्र, रातो, सेतो, पहेंलो कपडा आधा आधा मिटर, गोकुल धूप, रातो सस्र्यंू, पञ्चामृत । षष्ठी पूजाको निमित्त दही चिउरा, नरिवल । जातकलाई खुवाउन – चौरासी व्यञ्जन, मह, आदि । खुवाउने वस्तु – भद्राइको टाउको, वा सुनको प्रतिमा वा चाँदीको चम्चा जुन उपयुक्त हुन्छ । आसन, धान, भद्रासन, रातो कपडा, रेखिको पिठो, कुश ।</div>
+                </div>
+                <button class="btn-frame-book" onclick="openPujaModal('Pasni Puja')">Book Pasni Puja</button>
+            </div>
+
+            <!-- 8. NAWA GRAHA FRAME -->
+            <div class="puja-frame-card">
+                <div class="puja-frame-header">🌌</div>
+                <h2>नवग्रह पूजा ( Nawa Graha Shanti Puja)</h2>
+                <div class="puja-description">
+                    <p>पूर्वीय दर्शन अनुसार खगोलीय पिण्डहरू को आधारमा विभिन्न व्याख्या विश्लेषणहरु गरेको पाइन्छ जस अन्तर्गत नवग्रहहरूलाई विशेष स्थानमा विशेष महत्व दिएर विशेष महत्व दिएको पाइन्छ। बृहस्पति चन्द्रमा शनि मङ्गल बुध शुक्र सूर्य राहु र केतु। हरुलाई नवग्रह अन्तर्गत लिइन्छ। कुनै पनि व्यक्तिको जीवनमा कुनै न कुनै ग्रहले असर तथा प्रभाव पारिरहेकै हुन्छ। उक्त असारलाई कम गर्नको निमित्त उक्त ग्रहको शान्ति गर्नाले अथवा मन्त्र जप गर्नाले उक्त ग्रह ले दिने ऊर्जा सकारात्मक हुन जान्छ जसको फलस्वरूप व्यक्तिमा स्वास्थ्य सुख धन लक्ष्मी प्राप्ति सन्तान सुख आदि इत्यादि जुन ग्रहको प्रभावले दिन सकेको थिएन शान्ति गरिसकेपछि यस्ता समस्याहरुको समाधान भएर जान्छ र व्यक्तिको जीवन सहज हुन्छ। ग्रह पूजा गरी योग, मंत्र, तथा ध्यानको माध्यमबाट व्यक्ति आफ्नो जन्मकुण्डलीमा आएका ग्रहहरूले फलादि प्रदान गरी सजीव बनाउँछन्। यसले व्यक्ति आत्मा, मानवसम्प्रदाय, र सार्वभौम सुखशान्तिको लागि पूर्वाभास गराउँछ र जीवनमा सार्थकता प्रदान गर्दछ।</p>
+                </div>
+                <button class="btn-frame-book" onclick="openPujaModal('Nawa Graha Shanti')">Book Graha Shanti</button>
+            </div>
+
+        </div>
+    </main>
+
+    <div class="marigold-band"></div>
+
+    <footer class="footer_section">
+        <div class="container footer_box">
+            <div class="footer_item_box left">
+                <h3>Marga Darsan <span>Jyotish</span></h3>
+                <div class="footer_text">
+                    <p>Specializing in providing a precise range of Hindu religious activities, horoscope maps, and custom remedial metrics.</p>
+                </div>
+                <div class="footer_contact_deails">
+                    <ul>
+                        <li>📍 Sanepa, Lalitpur, Nepal</li>
+                        <li>✉️ astroclinic8@gmail.com</li>
+                        <li>📞 +977 9856055745</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer_item_box right">
+                <nav class="footer_menu">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Puja Services</a></li>
+                        <li><a href="index.html#rabin-pangeni">Astrology Services</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <section class="copyright_section">
+        <div class="container copyright_box">
+            <span>All Rights Reserved &copy; 2026</span>
+            <span>Branding: Marga Darsan Jyotish</span>
+        </div>
+    </section>
+
+    <div class="sticky-action-bar">
+        <a href="tel:+9779856055745" class="bar-btn-call">📞 Call / WhatsApp</a>
+        <button class="bar-btn-book" onclick="openPujaModal('Mobile Sticky Action Bar')">Book Online</button>
+    </div>
+
+    <!-- OVERLAY POPUP FORM COMPONENT -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-card">
+            <span class="close-modal" onclick="closePujaModal()">×</span>
+            <h3 style="margin-bottom: 5px; color: var(--navy);">Puja Request Form</h3>
+            <p style="font-size: 13px; color: var(--gray-text); margin-bottom: 20px;">Provide your contact parameters to schedule the sacred ritual.</p>
+            
+            <form action="https://formsubmit.co/astroclinic8@gmail.com" method="POST">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" id="automatedPujaTag" name="Selected Puja" value="">
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="Client Name" required placeholder="e.g., Ram Sharma">
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="Email Address" required placeholder="e.g., ram@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Your Physical Address</label>
+                    <input type="text" name="Physical Address" required placeholder="e.g., Sanepa, Lalitpur, Nepal">
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" name="Phone Number" required placeholder="98XXXXXXXX">
+                </div>
+
+                <div class="form-group">
+                    <label>Preferred Execution Date & Time</label>
+                    <input type="datetime-local" name="Requested Date and Time" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Additional Ritual Notes</label>
+                    <textarea name="Special Requirements" rows="3" placeholder="Any specific requirements or instructions..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Submit Booking Order</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openPujaModal(pujaName) {
+            document.getElementById('automatedPujaTag').value = pujaName;
+            const modal = document.getElementById('bookingModal');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePujaModal() {
+            const modal = document.getElementById('bookingModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function toggleMobileMenu() {
+            const button = document.getElementById('menuToggleBtn');
+            const drawer = document.getElementById('mobileDrawerOverlay');
+            button.classList.toggle('open');
+            drawer.classList.toggle('open');
+            if(drawer.classList.contains('open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Marga Darsan Jyotish | Connecting You Spiritually</title>
+    <meta name="description" content="Marga Darsan Jyotish is a beacon of spiritual services, dedicated to providing authentic and meaningful religious experiences on-site and online."/>
+    
+    <style>
+        :root {
+            --orange: #ff6900;
+            --orange-hover: #e55e00;
+            --amber: #fcb900;
+            --navy: #0f172a;
+            --white: #ffffff;
+            --gray-text: #475569;
+            --bg-cream: #faf5eb;
+            --phone-green: #22c55e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--navy);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ================= NAV BAR ================= */
+        .header_section {
+            background: var(--white);
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+        }
+
+        .header_box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--navy);
+            text-decoration: none;
+            z-index: 1002; /* Keeps logo visible above mobile menu drawer */
+        }
+
+        .logo-text span {
+            color: var(--orange);
+        }
+
+        .header_menu ul {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .header_menu ul li a {
+            text-decoration: none;
+            color: var(--navy);
+            font-weight: 700;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .header_menu ul li a:hover {
+            color: var(--orange);
+        }
+
+        .header_btn .text {
+            background: var(--orange);
+            color: var(--white);
+            padding: 12px 26px;
+            border-radius: 36px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .header_btn .text:hover {
+            background: var(--orange-hover);
+            transform: translateY(-1px);
+        }
+
+        /* Mobile Hamburger Menu Toggle Button */
+        .menu_bar_box {
+            display: none;
+            cursor: pointer;
+            z-index: 1002;
+            background: none;
+            border: none;
+            outline: none;
+        }
+
+        .menu_bar {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 25px;
+        }
+
+        .menu_bar span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: var(--navy);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hamburger Animation Transforms to 'X' icon when active */
+        .menu_bar_box.open .one { transform: rotate(45deg) translate(5px, 6px); }
+        .menu_bar_box.open .two { opacity: 0; }
+        .menu_bar_box.open .three { transform: rotate(-45deg) translate(5px, -6px); }
+
+        /* ================= MOBILE SLIDEOUT DRAWER MENU ================= */
+        .mobile_menu_overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background: var(--white);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile_menu_overlay.open {
+            transform: translateX(0);
+        }
+
+        .mobile_menu_overlay ul {
+            list-style: none;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .mobile_menu_overlay ul li a {
+            text-decoration: none;
+            color: var(--navy);
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        /* ================= PREMIUM HERO SLIDER ================= */
+        .hero {
+            position: relative;
+            color: var(--white);
+            padding: 120px 0;
+            text-align: center;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            z-index: 1;
+        }
+
+        .hero-slide.active { opacity: 1; }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.7) 100%);
+            z-index: 2;
+        }
+
+        .slider-text-grid {
+            max-width: 750px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 3;
+        }
+
+        .slider-text-grid h2 {
+            font-size: 44px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .slider-text-grid p {
+            font-size: 18px;
+            margin-bottom: 35px;
+            color: #cbd5e1;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .slider-text-grid .btn {
+            display: inline-block;
+            background: var(--orange);
+            color: var(--white);
+            text-decoration: none;
+            padding: 16px 40px;
+            border-radius: 36px;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 10px 20px rgba(255, 105, 0, 0.35);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .slider-text-grid .btn:hover {
+            background: var(--orange-hover);
+            transform: translateY(-2px);
+        }
+
+        /* ================= MARIGOLD SEPARATORS ================= */
+        .marigold-band {
+            height: 12px;
+            background: repeating-linear-gradient(45deg, var(--orange), var(--orange) 15px, var(--amber) 15px, var(--amber) 30px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ================= PROFILE INTRODUCTION ================= */
+        .introduction_section_box {
+            padding: 100px 0 80px 0;
+            background: var(--bg-cream);
+            scroll-margin-top: 80px;
+        }
+
+        .introduction_box {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .intro-image-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
+            border: 6px solid var(--white);
+            background-color: #f1f5f9;
+        }
+
+        .intro-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .text_box .title span {
+            color: var(--orange);
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .text_box .title h3 {
+            font-size: 34px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            color: var(--navy);
+            letter-spacing: -0.5px;
+        }
+
+        .text_box .description p {
+            color: var(--gray-text);
+            margin-bottom: 18px;
+            font-size: 16px;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .introduction_btn .btn {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--white);
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 36px;
+            font-weight: 700;
+            margin-top: 10px;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* ================= SERVICES GRID ================= */
+        .our_services {
+            padding: 90px 0;
+            background: #ffffff;
+        }
+
+        .our_service_title {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+        }
+
+        .our_service_title span { color: var(--orange); font-weight: 800; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;}
+        .our_service_title h2 { font-size: 36px; font-weight: 800; margin-top: 6px; letter-spacing: -0.5px;}
+
+        .our_service_item_box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .our_service_item {
+            background: #ffffff;
+            padding: 40px 24px;
+            border-radius: 20px;
+            box-shadow: 0 4px 25px rgba(15, 23, 42, 0.03);
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #f1f5f9;
+            cursor: pointer;
+        }
+
+        .our_service_item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px rgba(234, 88, 12, 0.08);
+            border-color: rgba(255, 105, 0, 0.2);
+        }
+
+        .service-icon-avatar {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 105, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 20px auto;
+        }
+
+        .our_service_item h5 { font-size: 20px; font-weight: 800; margin-bottom: 12px; color: var(--navy); }
+        .our_service_item p { font-size: 14.5px; color: var(--gray-text); line-height: 1.6; }
+
+        /* ================= VISION BANNER ================= */
+        .our_vision_section {
+            padding: 80px 20px;
+            color: var(--white);
+            text-align: center;
+            background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+        }
+
+        .our_vision_box h3 { font-size: 30px; font-weight: 800; margin-bottom: 15px; }
+        .our_vision_box p { font-size: 16px; max-width: 800px; margin: 0 auto; color: #ffedd5; }
+
+        /* ================= TESTIMONIALS ================= */
+        .tesimonial_section {
+            padding: 90px 0;
+            background: var(--bg-cream);
+        }
+
+        .testimonial_slider_box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 40px auto 0 auto;
+        }
+
+        .testimonial_items {
+            background: var(--white);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .testimonial_items h6 { font-size: 16px; font-weight: 800; margin-bottom: 12px; color: var(--orange); }
+        .testimonial_items p { font-size: 14.5px; color: var(--gray-text); font-style: italic; line-height: 1.6; }
+
+        /* ================= QUICK CONTACT BANNER ================= */
+        .orangesection {
+            background: var(--navy);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .know_more_box h3 { font-size: 24px; font-weight: 800; margin-bottom: 24px; letter-spacing: -0.5px; }
+
+        .btn-call-banner {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--phone-green);
+            color: white;
+            text-decoration: none;
+            padding: 16px 36px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 10px 20px rgba(34, 197, 94, 0.25);
+        }
+
+        /* ================= FOOTER COMPONENT ================= */
+        .footer_section {
+            background: #090d16;
+            color: #94a3b8;
+            padding: 70px 0;
+        }
+
+        .footer_box {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+        }
+
+        .footer_logo_box h3 { color: #fff; font-size: 26px; font-weight: 800; margin-bottom: 15px; }
+        .footer_logo_box h3 span { color: var(--orange); }
+        .footer_text p { margin-bottom: 24px; font-size: 14.5px; color: #64748b; }
+
+        .footer_contact_deails ul { list-style: none; }
+        .footer_contact_deails ul li { margin-bottom: 14px; font-size: 15px; color: #cbd5e1; }
+
+        .footer_menu ul { list-style: none; display: flex; flex-direction: column; gap: 12px; align-items: flex-end;}
+        .footer_menu ul li a { color: #94a3b8; text-decoration: none; font-size: 15px; font-weight: 600;}
+
+        .copyright_section {
+            background: #04060b;
+            color: #475569;
+            padding: 25px 0;
+            font-size: 14px;
+            border-top: 1px solid #1e293b;
+        }
+
+        .copyright_box { display: flex; justify-content: space-between; }
+
+        /* Mobile Bottom Fixed Ribbon Bar */
+        .sticky-action-bar {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: #ffffff;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.08);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            padding: 14px 16px;
+            z-index: 999;
+        }
+
+        .bar-btn-call {
+            background: var(--phone-green);
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .bar-btn-book {
+            background: var(--orange);
+            color: #ffffff;
+            border: none;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* ================= POPUP OVERLAY MODAL ================= */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 10000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 490px;
+            max-height: 85vh;
+            overflow-y: auto;
+            border-radius: 24px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 18px; right: 18px;
+            font-size: 26px; cursor: pointer; color: #94a3b8; font-weight: bold;
+        }
+
+        .form-group { margin-bottom: 16px; }
+        .grid-split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 5px; text-transform: uppercase; color: var(--navy);}
+        input, select, textarea { width: 100%; height: 50px; padding: 0 16px; font-size: 16px; border: 1px solid #cbd5e1; border-radius: 10px; outline: none; background: #f8fafc; color: var(--navy); }
+        textarea { height: auto; padding: 12px; }
+        input:focus, select:focus, textarea:focus { border-color: var(--orange); background: #fff; box-shadow: 0 0 0 4px rgba(255, 105, 0, 0.1); }
+        .btn-submit { width: 100%; height: 52px; background: var(--orange); color: #ffffff; border: none; border-radius: 30px; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 5px; }
+
+        /* ================= BREAKPOINTS media QUERY ================= */
+        @media (max-width: 768px) {
+            .header_menu, .header_btn { display: none; }
+            .menu_bar_box { display: block; } /* Displays the hamburger button icon layout */
+            .introduction_box, .footer_box { grid-template-columns: 1fr; gap: 40px; }
+            .our_service_item_box, .testimonial_slider_box { grid-template-columns: 1fr; gap: 20px; }
+            .footer_menu ul { align-items: flex-start; }
+            .slider-text-grid h2 { font-size: 32px; }
+            .copyright_box { flex-direction: column; gap: 10px; text-align: center; }
+            .intro-image-container { max-width: 320px; }
+            body { padding-bottom: 80px; }
+        }
+
+        @media (min-width: 769px) {
+            .sticky-action-bar { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header_section">
+        <div class="container header_box">
+            <a href="#" class="logo-text">Marga Darsan <span>Jyotish</span></a>
+            
+            <nav class="header_menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="services.html">Puja Services</a></li>
+                    <li><a href="#rabin-pangeni">Astrology</a></li>
+                </ul>
+            </nav>
+
+            <div class="header_btn" onclick="toggleModal(true)">
+                <div class="text">Book Now</div>
+            </div>
+
+            <button class="menu_bar_box" id="menuToggleBtn" onclick="toggleMobileMenu()">
+                <div class="menu_bar">
+                    <span class="one"></span>
+                    <span class="two"></span>
+                    <span class="three"></span>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile_menu_overlay" id="mobileDrawerOverlay">
+        <ul>
+            <li><a href="#" onclick="toggleMobileMenu()">Home</a></li>
+            <li><a href="services.html" onclick="toggleMobileMenu()">Puja Services</a></li>
+            <li><a href="#rabin-pangeni" onclick="toggleMobileMenu()">Astrology</a></li>
+            <li><button class="bar-btn-book" onclick="toggleModal(true); toggleMobileMenu();" style="padding: 12px 35px; border:none; font-size:18px;">Book Now</button></li>
+        </ul>
+    </div>
+
+    <section class="hero">
+        <div class="hero-slide active" style="background-image: url('1_slide.png');"></div>
+        <div class="hero-slide" style="background-image: url('2_slide.png');"></div>
+        <div class="hero-slide" style="background-image: url('3_slide.png');"></div>
+        
+        <div class="hero-overlay"></div>
+
+        <div class="container">
+            <div class="slider-text-grid">
+                <h2>Online & Physical Vedic Consultations</h2>
+                <p>Marga Darsan Jyotish conducts and supports both virtual and physical ceremonial worship and cosmic alignment services, interlinking global blessing seekers with authentic Vedic remedies.</p>
+                <button class="btn" onclick="toggleModal(true)">Perform Online Consultation</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="marigold-band"></div>
+
+    <section class="introduction_section_box" id="rabin-pangeni">
+        <div class="container introduction_box">
+            <div class="intro-image-container">
+                <img src="guru.jpeg" alt="Astrologer Guru Ji">
+            </div>
+            <div class="text_box">
+                <div class="title">
+                    <span>Your Spiritual Guide</span>
+                    <h3>Mr. Rabin Pangeni</h3>
+                    <p style="font-size: 1.1rem; color: #d97706; font-weight: 600; margin-top: 5px;">
+                        Astro, Vaastu & Motivational Counselor (10+ Years Experience)
+                    </p>
+                </div>
+                
+                <div class="description">
+                    <ul style="list-style-type: square; margin-bottom: 15px; padding-left: 20px; font-size: 0.95rem; line-height: 1.5;">
+                        <li><strong>General Secretary</strong> – South Asian Astro Federation National Committee, Nepal</li>
+                        <li><strong>Spokesman</strong> – South Asian Astro Federation Central & International Committee</li>
+                    </ul>
+
+                    <p>Marga Darsan Jyotish, led by Mr. Rabin Pangeni, is established to provide a <strong>ONE STOP SOLUTION</strong> to all your spiritual and counseling needs. Combining ancient Vedic wisdom with modern motivational guidance, we believe services should be standardized with the best outcome for devotees. Consultations and pujas are available both <strong>Offline and Online</strong> worldwide.</p>
+                    <p>मार्ग दर्शन ज्योतिषले अनलाइन तथा अफलाइनद्वारा देशविदेशमा रहनुभएका सम्पूर्ण धार्मिक जनहरूको आस्था र भरोसालाई उच्च मूल्याङ्कन गरी सेवा प्रदान गर्दछ। यहाँहरूको विश्वास, धार्मिक मान्यता र वैदिक पद्धतिलाई आत्मसाथ गरी आचार्य गुरुहरुद्वारा स्पष्ट पारिन्छ ।</p>
+                    
+                    <div class="awards_section" style="margin-top: 20px; border-top: 1px solid #e5e7eb; padding-top: 15px;">
+                        <h4 style="margin-bottom: 8px; color: #1f2937; font-size: 1rem;">🏆 Awards & Recognitions:</h4>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap; font-size: 0.85rem;">
+                            <span style="background: #f3f4f6; padding: 4px 10px; border-radius: 15px; border: 1px solid #e5e7eb;">⭐ Young Star Astrologer Award</span>
+                            <span style="background: #f3f4f6; padding: 4px 10px; border-radius: 15px; border: 1px solid #e5e7eb;">⭐ Mandakini Award</span>
+                            <span style="background: #f3f4f6; padding: 4px 10px; border-radius: 15px; border: 1px solid #e5e7eb;">⭐ Jyotish Rishi Award</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="introduction_btn" onclick="toggleModal(true)" style="margin-top: 20px;">
+                    <button class="btn">Book Appointment</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="marigold-band"></div>
+
+    <section class="our_services">
+        <div class="container">
+            <div class="our_service_title">
+                <span>WHAT WE DO ?</span>
+                <h2>Our Sacred Services</h2>
+            </div>
+            <div class="our_service_item_box">
+                
+                <a href="services.html" class="service-card-link" style="width: 100%;">
+                    <div class="our_service_item">
+                        <div class="service-icon-avatar">📜</div>
+                        <h5>Puja Services</h5>
+                        <p>Authentic Vedic paths, rituals, and annual custom shanti metrics handled flawlessly by qualified pandits.</p>
+                    </div>
+                </a>
+
+                <a href="#rabin-pangeni" class="service-card-link" style="width: 100%;">
+                    <div class="our_service_item">
+                        <div class="service-icon-avatar">🔮</div>
+                        <h5>Astrology Services</h5>
+                        <p>Comprehensive chart readings mapping out life roadmaps, planetary alignments, and timed forecasts.</p>
+                    </div>
+                </a>
+
+                <div class="our_service_item" onclick="toggleModal(true)">
+                    <div class="service-icon-avatar">💎</div>
+                    <h5>Gems & Rudraksha</h5>
+                    <p>Certified gemstones analysis and energized natural rudraksha consultation for therapeutic balancing metrics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="our_vision_section">
+        <div class="container our_vision_box">
+            <h3>"मार्ग दर्शन ज्योतिषको शान, वैदिक संस्कृतिको पहिचान"</h3>
+            <p>कुनै पनि धार्मिक अनुष्ठानहरू (पुजा) गर्दा व्यक्तिको, परिवारको, समाज र राष्ट्रको हितको लागि गरिन्छ। धार्मिक अनुष्ठानहरूले व्यक्तिको आध्यात्मिक र व्यावहारिक बाटोहरूलाई स्पष्ट र न्यायिक बनाउँदछ।</p>
+        </div>
+    </section>
+
+    <section class="tesimonial_section">
+        <div class="container">
+            <div class="our_service_title">
+                <span>TESTIMONIALS</span>
+                <h2>What Our Clients Say</h2>
+            </div>
+            <div class="testimonial_slider_box">
+                <div class="testimonial_items">
+                    <h6>Suraj Thapa</h6>
+                    <p>"What I liked most was that they always try to explain why the puja is done and brief the necessary processes before starting. Very transparent workflow."</p>
+                </div>
+                <div class="testimonial_items">
+                    <h6>Mr. Sandip Krishna Shrestha</h6>
+                    <p>"A highly user-friendly interface with deep customized options. The entire consultation booking process flows beautifully."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="orangesection">
+        <div class="container know_more_box">
+            <h3>Quick contact to organize any Hindu Religious Rituals Activities</h3>
+            <a href="tel:+9779856055745" class="btn-call-banner">
+                Call / WhatsApp: +977 9856055745
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer_section">
+        <div class="container footer_box">
+            <div class="footer_item_box left">
+                <h3>Marga Darsan <span>Jyotish</span></h3>
+                <div class="footer_text">
+                    <p>Specializing in providing a precise range of Hindu religious activities, horoscope maps, and custom remedial metrics.</p>
+                </div>
+                <div class="footer_contact_deails">
+                    <ul>
+                        <li>📍 Kathmandu, Nepal</li>
+                        <li>✉️ astroclinic8@gmail.com</li>
+                        <li>📞 +977 9856055745</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer_item_box right">
+                <nav class="footer_menu">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="services.html">Puja Services</a></li>
+                        <li><a href="#rabin-pangeni">Astrology Services</a></li>
+                        <li><a href="#" onclick="toggleModal(true)">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <section class="copyright_section">
+        <div class="container copyright_box">
+            <span>All Rights Reserved &copy; 2026</span>
+            <span>Branding: Marga Darsan Jyotish</span>
+        </div>
+    </section>
+
+    <div class="sticky-action-bar">
+        <a href="tel:+9779856055745" class="bar-btn-call">📞 Call / WhatsApp</a>
+        <button class="bar-btn-book" onclick="toggleModal(true)">Book Online</button>
+    </div>
+
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-card">
+            <span class="close-modal" onclick="toggleModal(false)">×</span>
+            <h3 style="margin-bottom: 5px; color: var(--navy);">Consultation Intake Form</h3>
+            <p style="font-size: 13px; color: var(--gray-text); margin-bottom: 20px;">Provide accurate birth parameters for accurate chart maps calculation.</p>
+            
+            <form action="https://formsubmit.co/astroclinic8@gmail.com" method="POST">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="Name" required placeholder="e.g., Ram Sharma">
+                </div>
+
+                <div class="grid-split">
+                    <div class="form-group">
+                        <label>Date of Birth</label>
+                        <input type="date" name="DOB" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Exact Time of Birth</label>
+                        <input type="time" name="TOB" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Place of Birth</label>
+                    <input type="text" name="POB" required placeholder="e.g., Pokhara, Nepal">
+                </div>
+
+                <div class="grid-split">
+                    <div class="form-group">
+                        <label>WhatsApp Phone</label>
+                        <input type="tel" name="Contact Phone" required placeholder="98XXXXXXXX">
+                    </div>
+                    <div class="form-group">
+                        <label>Service Type</label>
+                        <select name="Service">
+                            <option value="Kundali Reading">Kundali Reading</option>
+                            <option value="Career/Business">Career Guidance</option>
+                            <option value="Matchmaking">Marriage Match</option>
+                            <option value="Remedies/Gemstone">Gemstone Consultation</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Preferred Appointment Day & Time</label>
+                    <input type="datetime-local" name="Requested Appointment Slot" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="Email" required placeholder="e.g., ram@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Primary Life Context / Concerns</label>
+                    <textarea name="Message" rows="3" placeholder="Briefly write your goals..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Submit Details Safely</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal Intake Overlay Controller System
+        function toggleModal(show) {
+            const modal = document.getElementById('bookingModal');
+            modal.style.display = show ? 'flex' : 'none';
+            document.body.style.overflow = show ? 'hidden' : 'auto';
+        }
+
+        // NEWLY INSTALLED: Mobile Navigation Slide Drawer Engine Controller
+        function toggleMobileMenu() {
+            const button = document.getElementById('menuToggleBtn');
+            const drawer = document.getElementById('mobileDrawerOverlay');
+            
+            button.classList.toggle('open');
+            drawer.classList.toggle('open');
+            
+            // Prevent body double scrolling when drawer is active
+            if(drawer.classList.contains('open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Automatic Hero Fading Slider Image Engine
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        
+        function advanceSlide() {
+            slides[currentSlideIndex].classList.remove('active');
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            slides[currentSlideIndex].classList.add('active');
+        }
+        
+        setInterval(advanceSlide, 4500);
+    </script>
+</body>
+</html>
